@@ -50,42 +50,48 @@ class Developer:
 
 
 def processCommits(repo, args):
+    from github import GithubException
+    
     counter = 0
     people = {}
-    for commit in repo.get_commits():
-        # just in case all the user data isn't fully populated (should only happen in enterprise GitHub)
-        if commit.author is None:
-            author='unassigned'
-            login='s0'
-            email='noone@iag.com.au'
-        else:
-            author = commit.author.name
-        
-            if commit.committer is None:
-                login = commit.author.login
-            else:
-                login = commit.committer.login
-            
-            if commit.author.email is None:
+
+    try:
+        for commit in repo.get_commits():
+            # just in case all the user data isn't fully populated (should only happen in enterprise GitHub)
+            if commit.author is None:
+                author='unassigned'
+                login='s0'
                 email='noone@iag.com.au'
             else:
-                email=commit.author.email
-   
-        # create new developer commit object
-        x = Developer(author, login, email, commit.stats.additions, commit.stats.deletions)
+                author = commit.author.name
         
-        # either add it to the hash or update existing    
-        if x in people:
-            people[x].incrementChanges(commit.stats.additions, commit.stats.deletions)
-        else:
-            people[x] = x
-        counter += 1
+                if commit.committer is None:
+                    login = commit.author.login
+                else:
+                    login = commit.committer.login
+            
+                if commit.author.email is None:
+                    email='noone@iag.com.au'
+                else:
+                    email=commit.author.email
+   
+            # create new developer commit object
+            x = Developer(author, login, email, commit.stats.additions, commit.stats.deletions)
+        
+            # either add it to the hash or update existing    
+            if x in people:
+                people[x].incrementChanges(commit.stats.additions, commit.stats.deletions)
+            else:
+                people[x] = x
+            counter += 1
     
-    # standard display routine    
-    if not args.manager:    
-        print "{}: {} commits".format(repo.full_name, counter)
-    for k in sorted(people):
-        k.display(args.manager, repo.full_name)
+        # standard display routine    
+        if not args.manager:    
+            print "{}: {} commits".format(repo.full_name, counter)
+        for k in sorted(people):
+            k.display(args.manager, repo.full_name)
+    # repos with 0 commits generate an exception which we can safely ignore
+    except: GithubException
                     
 def main():
     """main routine"""
