@@ -135,7 +135,7 @@ def main():
 
     # every data file needs a header
     if args.manager:
-        print "# repo, login, name, commits, additions, deletions"
+        print "# repo, login, name, commits, merges, additions, deletions"
 
     if args.list_repos:
         for repo in g.get_repos():
