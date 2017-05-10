@@ -26,7 +26,6 @@ To limit to a specific repo:
 [PyGitHub](http://pygithub.readthedocs.io/en/latest/reference.html)
 
 ## TL;DR
-<<<<<<< HEAD
 ### Australia
 Dump everything. Unset all proxy environment variables before running; the proxy dislikes rapid programatic API calls:
 
