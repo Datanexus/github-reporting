@@ -26,7 +26,8 @@ To limit to a specific repo:
 [PyGitHub](http://pygithub.readthedocs.io/en/latest/reference.html)
 
 ## TL;DR
-###Australia
+<<<<<<< HEAD
+### Australia
 Dump everything. Unset all proxy environment variables before running; the proxy dislikes rapid programatic API calls:
 
     PYTHONHTTPSVERIFY=0 ./eddiebot.py https://github.customerlabs.com.au/api/v3 67d65fba5616bf953466e30ba0e41eeb33c58ae7
