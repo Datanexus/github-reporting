@@ -26,6 +26,9 @@ To limit to a specific repo:
 [PyGitHub](http://pygithub.readthedocs.io/en/latest/reference.html)
 
 ## TL;DR
+### Public
+    PYTHONHTTPSVERIFY=0 /tmp/github-reporting/eddiebot.py  --repo iagcl/data_pipeline https://api.github.com 7df7f260b8ac9a2f13087eafb8f408610ba93815
+    
 ### Australia
 Dump everything. Unset all proxy environment variables before running; the proxy dislikes rapid programatic API calls:
 
