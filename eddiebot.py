@@ -1,8 +1,7 @@
 #!/usr/bin/env python -u
 
-__copyright__ = '(c) 2016 DataNexus Inc.  All Rights Reserved.'
 __license__ = 'APLv2.0'
-__author__ = 'ckeller@datanexus.org'
+__author__ = 'cto@datanexus.org'
 
 class Developer:
     """class that holds the developer commit information"""
