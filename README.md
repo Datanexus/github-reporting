@@ -27,9 +27,5 @@ To limit to a specific repo:
 
 ## TL;DR
 ### Public
-    PYTHONHTTPSVERIFY=0 /tmp/github-reporting/eddiebot.py  --repo iagcl/data_pipeline https://api.github.com 7df7f260b8ac9a2f13087eafb8f408610ba93815
+    PYTHONHTTPSVERIFY=0 /tmp/github-reporting/eddiebot.py  --repo Datanexus/data_pipeline https://api.github.com <_put token here_>
     
-### Australia
-Dump everything. Unset all proxy environment variables before running; the proxy dislikes rapid programatic API calls:
-
-    PYTHONHTTPSVERIFY=0 ./eddiebot.py https://github.customerlabs.com.au/api/v3 67d65fba5616bf953466e30ba0e41eeb33c58ae7
